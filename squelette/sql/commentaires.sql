@@ -15,11 +15,11 @@ DROP TABLE IF EXISTS commentaires;
 --   cree_le     la date et l'heure du commentaire ; par defaut, maintenant
 -- Et une regle : quand un article est supprimé, ses commentaires disparaissent avec lui.
 CREATE TABLE IF NOT EXISTS commentaires(
-    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     article_id INT NOT NULL REFERENCES articles(id) ON DELETE CASCADE,
     nom TEXT NOT NULL,
     texte TEXT NOT NULL CHECK (texte != ''),
-    cree_le TIMESTAMPTZ DEFAULT NOW()
+    cree_le TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- QUESTION 2 · Inserer les huit commentaires de data/commentaires.initial.json.

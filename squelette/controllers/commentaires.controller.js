@@ -41,7 +41,7 @@ function trouver(req, res, next) {
 
 function modifier(req, res, next) {
   const { texte } = req.body || {};
-  if (!texte) return next(new ErreurHttp(400, 'texte manquant', 'Le champ texte est obligatoire'));
+  if (!texte) return next(new ErreurHttp(400, 'texte manquant', 'Le texte est obligatoire'));
   service.modifier(Number(req.params.id), { texte })
     .then((commentaire) => res.json(commentaire))
     .catch(next);

@@ -16,7 +16,7 @@ async function lister(articleId) {
       `SELECT id, article_id, nom, texte, cree_le
      FROM commentaires
      WHERE article_id = $1
-     ORDER BY cree_le ASC, id ASC`,
+     ORDER BY cree_le, id`,
       [articleId]
   );
   return resultat.rows;
